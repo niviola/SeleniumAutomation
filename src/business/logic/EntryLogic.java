@@ -20,7 +20,7 @@ public class EntryLogic extends GenericMethods {
 	}
 	
 	public void deleteEntry(){
-		click(By.cssSelector("a.delete i.foundicon-remove"));
+		click(By.cssSelector("a.delete"));
 	    closeAlertAndGetItsText();
 	}
 	
