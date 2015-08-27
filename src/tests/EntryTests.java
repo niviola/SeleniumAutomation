@@ -59,6 +59,7 @@ public class EntryTests {
 	@Test
 	public void testEntryErase() throws Exception {
 		// TODO delete entry
+		 entryLogic.deleteEntry();
 	}
 	
 	@AfterClass

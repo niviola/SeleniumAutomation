@@ -19,6 +19,11 @@ public class EntryLogic extends GenericMethods {
 		submitEntryModifyForm();
 	}
 	
+	public void deleteEntry(){
+		click(By.cssSelector("a.delete i.foundicon-remove"));
+	    closeAlertAndGetItsText();
+	}
+	
 	private void openFirstEntry() {
 		findElements(By.cssSelector("table.items a.update-entry")).get(0).click();
 //		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Entry_name")));
