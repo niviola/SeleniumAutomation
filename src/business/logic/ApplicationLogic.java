@@ -13,4 +13,14 @@ public class ApplicationLogic extends GenericMethods {
 	public void stop() {
 		quit();
 	}
+	
+	public void Ending() {    // this is to fix INFO: Command failed.... error message
+        try{    
+          driver.close();
+          Thread.sleep(3000);
+           }
+       catch(Exception b){
+          b.getMessage();
+           }
+	}
 }

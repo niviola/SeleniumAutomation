@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Selenium/selenium-java-2.45.0/selenium-2.45.0/selenium-server-standalone-2.46.0.jar"/>
+	<classpathentry kind="lib" path="C:/Selenium/selenium-2.47.1/selenium-server-standalone-2.47.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

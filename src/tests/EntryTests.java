@@ -1,5 +1,7 @@
 package tests;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import model.Entry;
 import model.User;
 
@@ -9,13 +11,13 @@ import business.logic.ApplicationLogic;
 import business.logic.EntryLogic;
 import business.logic.UserLogic;
 
+
 public class EntryTests {
 
 	private static EntryLogic entryLogic;
 	private static UserLogic userLogic;
-	private static ApplicationLogic app;
-
-	// Test Level =============================================================================
+	protected static ApplicationLogic app;
+	
 	@BeforeClass
 	public static void beforeAll() throws Exception {
 		app = new ApplicationLogic();
@@ -37,10 +39,11 @@ public class EntryTests {
 		entry.userName = "John";
 		entry.password = "1234";
 		entry.url = "";
-		entry.tag = "";
+		entry.tag = "1";
 		entry.comment = "";
 
 		entryLogic.createEntry(entry);
+		assertThat(entryLogic.getTextAfterEntryCreation(), containsString("The entry was created successfully."));
 	}
 
 	@Test
@@ -50,7 +53,7 @@ public class EntryTests {
 		entry.userName = "user1";
 		entry.password = "123456";
 		entry.url = "yahoo.com";
-		entry.tag = "9"; 
+		entry.tag = "2"; 
 		entry.comment = "modified entry";
 		
 		entryLogic.modifyEntry(entry);
@@ -58,14 +61,17 @@ public class EntryTests {
 
 	@Test
 	public void testEntryErase() throws Exception {
-		// TODO delete entry
 		 entryLogic.deleteEntry();
+	}
+	
+	@Test
+	public void checkEntryElements() throws Exception {
+	entryLogic.checkElementsOnManageEntriesPage();
 	}
 	
 	@AfterClass
 	public static void afterAll() throws Exception {
 		app.stop();
+		 app.Ending();
 	}	
-	
-	
 }

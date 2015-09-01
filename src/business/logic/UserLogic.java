@@ -20,5 +20,6 @@ public class UserLogic extends GenericMethods {
 
 	private void submitLogin() {
 		click(By.cssSelector("a.button"));
+		waitWhileAjaxCompleted(10);
 	}
 }

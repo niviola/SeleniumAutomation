@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GenericMethods {
 
-	private WebDriver driver;
+	protected WebDriver driver;
 	private boolean acceptNextAlert = true;
 	private StringBuffer verificationErrors = new StringBuffer();
 	@SuppressWarnings("unused")
@@ -29,7 +30,7 @@ public class GenericMethods {
 	// Technical Level
 	// =====================================================================================
 	// Should not be locators specific to application
-
+	
 	protected void sleep(int sec) {
 		try {
 			Thread.sleep(sec * 1000);
@@ -102,4 +103,18 @@ public class GenericMethods {
 			fail(verificationErrorString);
 		}		
 	}
+	
+	protected Object executeJavaScript(String script) {
+	    return ((JavascriptExecutor) driver).executeScript(script);
+	} 
+
+	protected void waitWhileAjaxCompleted(int sec) {
+	    for (int i = 0; i < sec && !isAjaxCompleted(); i++)
+	        sleep(1);
+	}
+
+	private boolean isAjaxCompleted() {
+	    return (Long) executeJavaScript("return window.jQuery.active") == 0;
+	} 
+	
 }
