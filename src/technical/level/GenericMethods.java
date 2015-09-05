@@ -115,6 +115,9 @@ public class GenericMethods {
 
 	private boolean isAjaxCompleted() {
 	    return (Long) executeJavaScript("return window.jQuery.active") == 0;
-	} 
+	}
 	
+	protected String getElementText(By locator) {
+		return findElement(locator).getText();
+	}
 }

@@ -1,5 +1,6 @@
 package business.logic;
 
+import static org.junit.Assert.*;
 import org.openqa.selenium.By;
 
 import com.thoughtworks.selenium.webdriven.commands.IsElementPresent;
@@ -16,7 +17,7 @@ public class EntryLogic extends GenericMethods {
 		submitEntryCreationForm();
 	}
 	
-	public void modifyEntry(Entry entry) {
+	public void modifyFirstEntry(Entry entry) {
 		openFirstEntry();
 		fillEntryModificationForm(entry);
 		submitEntryModifyForm();
@@ -77,7 +78,14 @@ public class EntryLogic extends GenericMethods {
 		System.out.println("****************************************************");
 		System.out.println("Manage Entry page elements");
 		System.out.println("****************************************************");
-		System.out.println("Search - is present = " 			+ isElementPresent(By.cssSelector("input.ui-autocomplete-input")));
+		System.out.println("Search - is present = " 			+ isElementPresent(By.cssSelector("input.ui-autocomplete-input"))); // TODO change to assertThat
+		if (isElementPresent(By.cssSelector("input.ui-autocomplete-input")))
+			System.out.println("Search - is present");
+		else 
+			System.out.println("Search - is missing");
+		
+		assertTrue("Search is missing", isElementPresent(By.cssSelector("input.ui-autocomplete-input")));
+				
 		System.out.println("Advanced Search - is present = " 	+ isElementPresent(By.cssSelector("a.search-button")));
 		System.out.println("Displaying results - is present = " + isElementPresent(By.cssSelector("div.summary")));
 		System.out.println("Username(1) - is present = " 		+ isElementPresent(By.cssSelector("a.sort-link[href*='username']")));
@@ -92,5 +100,9 @@ public class EntryLogic extends GenericMethods {
 		System.out.println("Tags(3) - is present = " 			+ isElementPresent(By.cssSelector("li.has-dropdown > a[href*='tag/index']")));
 		System.out.println("Tags(4) - is present = " 			+ isElementPresent(By.cssSelector("nav .has-dropdown > a[href*=tag]")));
 //		System.out.println(" - is present = " 	+ isElementPresent(By.cssSelector("")));
+	}
+
+	public Object getFirstEntryNameFromTable() {
+		return getElementText(By.cssSelector("locator")); // TODO build locator
 	}
 }

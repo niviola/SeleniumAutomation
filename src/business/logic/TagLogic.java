@@ -9,6 +9,7 @@ import technical.level.GenericMethods;
 public class TagLogic extends GenericMethods {
 
 	public void createTag(Tag tag) {
+		openManageTagsPage();
 		initTagCreation();
 		fillTagCreationForm(tag);
 		saveTagCreationForm();		

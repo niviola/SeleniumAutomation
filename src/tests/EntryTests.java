@@ -2,76 +2,47 @@ package tests;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
 import model.Entry;
-import model.User;
+import org.junit.Test;
 
-import org.junit.*;
+public class EntryTests extends TestBase {
 
-import business.logic.ApplicationLogic;
-import business.logic.EntryLogic;
-import business.logic.UserLogic;
-
-
-public class EntryTests {
-
-	private static EntryLogic entryLogic;
-	private static UserLogic userLogic;
-	protected static ApplicationLogic app;
-	
-	@BeforeClass
-	public static void beforeAll() throws Exception {
-		app = new ApplicationLogic();
-		userLogic = new UserLogic();
-		entryLogic = new EntryLogic();
-
-		User usr = new User();
-		usr.login = "admin";
-		usr.password = "admin";		
-		
-		app.start();
-		userLogic.login(usr);		
-	}	
-	
 	@Test
 	public void testEntryCreation() throws Exception {
-		Entry entry = new Entry();
-		entry.name = "Google Account";
-		entry.userName = "John";
-		entry.password = "1234";
-		entry.url = "";
-		entry.tag = "1";
-		entry.comment = "";
-
-		entryLogic.createEntry(entry);
-		assertThat(entryLogic.getTextAfterEntryCreation(), containsString("The entry was created successfully."));
+		System.out.println("EntryTests: testEntryCreation");
+		Entry entry = generateEntry(); // data
+		entryLogic.createEntry(entry); // action
+		assertThat(entryLogic.getTextAfterEntryCreation(), containsString("The entry was created successfully.")); // check
+		assertThat(entry.name, equalTo(entryLogic.getFirstEntryNameFromTable()));
 	}
 
 	@Test
 	public void testEntryModification() throws Exception {
-		Entry entry = new Entry();
-		entry.name = "entry1";
-		entry.userName = "user1";
-		entry.password = "123456";
-		entry.url = "yahoo.com";
-		entry.tag = "2"; 
-		entry.comment = "modified entry";
-		
-		entryLogic.modifyEntry(entry);
+		System.out.println("EntryTests: testEntryModification");
+		Entry entry = generateEntry(); // data
+		entry.name = "Modified Account";
+		entry.comment = "Modified Entry";
+
+		entryLogic.modifyFirstEntry(entry); // action
+		//check
 	}
 
 	@Test
 	public void testEntryErase() throws Exception {
-		 entryLogic.deleteEntry();
+		System.out.println("EntryTests: testEntryErase");
+		entryLogic.deleteEntry();
 	}
 	
-	@Test
-	public void checkEntryElements() throws Exception {
-	entryLogic.checkElementsOnManageEntriesPage();
+	private Entry generateEntry() {
+		Entry entry = new Entry();
+		entry.name = "New Account" + generateUniqueNumber();
+		entry.userName = "John";
+		entry.password = "1234";
+		entry.url = "";
+		entry.tag = "1";
+		entry.comment = "New Entry";
+		return entry;
 	}
 	
-	@AfterClass
-	public static void afterAll() throws Exception {
-		app.stop();
-		 app.Ending();
-	}	
 }
