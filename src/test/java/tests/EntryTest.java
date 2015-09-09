@@ -4,9 +4,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import model.Entry;
+
 import org.junit.Test;
 
-public class EntryTests extends TestBase {
+public class EntryTest extends TestBase {
 
 	@Test
 	public void testEntryCreation() throws Exception {
@@ -14,7 +15,7 @@ public class EntryTests extends TestBase {
 		Entry entry = generateEntry(); // data
 		entryLogic.createEntry(entry); // action
 		assertThat(entryLogic.getTextAfterEntryCreation(), containsString("The entry was created successfully.")); // check
-		assertThat(entry.name, equalTo(entryLogic.getFirstEntryNameFromTable()));
+		//assertThat(entry.name, equalTo(entryLogic.getFirstEntryNameFromTable()));
 	}
 
 	@Test
@@ -25,7 +26,7 @@ public class EntryTests extends TestBase {
 		entry.comment = "Modified Entry";
 
 		entryLogic.modifyFirstEntry(entry); // action
-		//check
+		assertThat(entryLogic.getTextAfterEntryModification(), containsString("The entry was saved successfully.")); //check
 	}
 
 	@Test

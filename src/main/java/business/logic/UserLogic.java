@@ -1,10 +1,9 @@
 package business.logic;
 
 import model.User;
+import technical.level.GenericMethods;
 
 import org.openqa.selenium.By;
-
-import technical.level.GenericMethods;
 
 public class UserLogic extends GenericMethods {
 

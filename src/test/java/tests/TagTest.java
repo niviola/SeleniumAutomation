@@ -4,7 +4,7 @@ import model.Tag;
 
 import org.junit.Test;
 
-public class TagTests extends TestBase {
+public class TagTest extends TestBase {
 
 	@Test
 	public void testTagCreation() throws Exception {

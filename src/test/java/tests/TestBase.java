@@ -5,11 +5,11 @@ import java.util.Date;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
-import model.User;
 import business.logic.ApplicationLogic;
 import business.logic.EntryLogic;
 import business.logic.TagLogic;
 import business.logic.UserLogic;
+import model.User;
 
 public class TestBase {
 	protected static EntryLogic entryLogic;
@@ -35,12 +35,12 @@ public class TestBase {
 		userLogic.login(usr);
 	}
 
-	@AfterClass
+	/*@AfterClass
 	public static void afterAll() throws Exception {
 		System.out.println("TestBase: afterAll");
 		app.stop();
 //		app.Ending();
-	}
+	}*/
 	
 	protected long generateUniqueNumber() {
 		return new Date().getTime();
