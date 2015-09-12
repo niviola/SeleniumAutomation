@@ -27,8 +27,4 @@ public class TagTest extends TestBase {
 		 tagLogic.deleteTag();
 	}
 	
-	@Test
-	public void checkTagElements() throws Exception {
-		tagLogic.checkElementsOnManageTagsPage();
-	}
 }

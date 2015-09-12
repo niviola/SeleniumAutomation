@@ -120,4 +120,8 @@ public class GenericMethods {
 	protected String getElementText(By locator) {
 		return findElement(locator).getText();
 	}
+	
+	protected String getPageTitle() {
+		return driver.getTitle();
+	}
 }

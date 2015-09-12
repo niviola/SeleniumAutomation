@@ -1,5 +1,7 @@
 package business.logic;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import model.User;
 import technical.level.GenericMethods;
 
@@ -10,6 +12,8 @@ public class UserLogic extends GenericMethods {
 	public void login(User usr) {
 		fillLoginForm(usr);
 		submitLogin();
+		assertThat(getPageTitle(), containsString("PHP Password Manager - Entry"));
+		assertThat(getElementText(By.cssSelector("div#content h1")), containsString("Manage Entries"));
 	}
 
 	private void fillLoginForm(User usr) {

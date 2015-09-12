@@ -2,7 +2,6 @@ package tests;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
 import model.Entry;
 
 import org.junit.Test;

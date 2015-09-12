@@ -31,7 +31,6 @@ public class TagLogic extends GenericMethods {
 
 	public void openManageTagsPage() {
 		openURL("http://localhost/passwordManager/index.php?r=tag/index");
-		
 	}
 	
 	private void initTagCreation() {

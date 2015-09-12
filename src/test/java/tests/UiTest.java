@@ -8,4 +8,9 @@ public class UiTest extends TestBase {
 	public void testElementsOnManageEntriesPage() throws Exception {
 		entryLogic.checkElementsOnManageEntriesPage();
 	}
+	
+	@Test
+	public void checkTagElements() throws Exception {
+		tagLogic.checkElementsOnManageTagsPage();
+	}
 }

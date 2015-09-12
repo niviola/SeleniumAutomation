@@ -79,6 +79,10 @@ public class EntryLogic extends GenericMethods {
 	private void submitEntryModifyForm() {
 		click(By.name("yt1"));
 	}
+	
+	public void openManageEntriesPage() {
+		openURL("http://localhost/passwordManager/index.php?r=entry/index");
+	}
 
 	public void checkElementsOnManageEntriesPage() {
 		System.out.println("****************************************************");
@@ -89,6 +93,7 @@ public class EntryLogic extends GenericMethods {
 			System.out.println("Search - is present");
 		else 
 			System.out.println("Search - is missing");*/
+		openManageEntriesPage();
 		
 		assertTrue("Search is missing", isElementPresent(By.cssSelector("input.ui-autocomplete-input")));
 				
