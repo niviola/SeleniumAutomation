@@ -4,6 +4,8 @@ import java.util.Date;
 
 import model.User;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
@@ -18,6 +20,7 @@ public class TestBase {
 	protected static ApplicationLogic app;
 	protected static TagLogic tagLogic;
 	private static int testCount = 0;
+	private static int counter = 0;
 
 	@BeforeClass
 	public static void beforeAll() throws Exception {
@@ -53,12 +56,29 @@ public class TestBase {
 		System.out.println("Test Number: " + testCount);		
 	}
 	
-	/*@AfterClass
+	@AfterClass
 	public static void afterAll() throws Exception {
-		System.out.println("TestBase: afterAll");
+		if (counter == testCount) {
+		afterAllTests();
+		}
+		afterEachClass();
+	}
+	
+	private static void afterEachClass() {
+		System.out.println("TestBase: after each class");
+	}
+	
+	@After
+	public static void afterEachTest() throws Exception{
+		counter++;
+		System.out.println("TestBase: after each test");
+		System.out.println("counter: " + counter);
+	}
+
+	private static void afterAllTests() {
+		System.out.println("TestBase: after all tests");
 		app.stop();
-//		app.Ending();
-	}*/
+	}
 	
 	protected long generateUniqueNumber() {
 		return new Date().getTime();
