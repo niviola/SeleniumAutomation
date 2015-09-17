@@ -3,12 +3,14 @@ package business.logic;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import model.User;
+import ru.yandex.qatools.allure.annotations.Step;
 import technical.level.GenericMethods;
 
 import org.openqa.selenium.By;
 
 public class UserLogic extends GenericMethods {
-
+	
+	@Step
 	public void login(User usr) {
 		fillLoginForm(usr);
 		submitLogin();

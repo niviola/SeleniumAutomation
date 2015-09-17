@@ -1,13 +1,13 @@
 package business.logic;
 
 import org.openqa.selenium.By;
-
-import model.Entry;
 import model.Tag;
+import ru.yandex.qatools.allure.annotations.Step;
 import technical.level.GenericMethods;
 
 public class TagLogic extends GenericMethods {
-
+	
+	@Step
 	public void createTag(Tag tag) {
 		openManageTagsPage();
 		initTagCreation();
@@ -15,6 +15,7 @@ public class TagLogic extends GenericMethods {
 		saveTagCreationForm();		
 	}
 
+	@Step
 	public void updateTag(Tag tag) {
 		openManageTagsPage();
 		openFirstTag();
@@ -22,11 +23,11 @@ public class TagLogic extends GenericMethods {
 		saveTagUpdateForm();
 	}
 
+	@Step
 	public void deleteTag() {
 		openManageTagsPage();
 		click(By.cssSelector("table.items a.delete"));
 	    closeAlertAndGetItsText();
-		
 	}
 
 	public void openManageTagsPage() {

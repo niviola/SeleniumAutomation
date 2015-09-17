@@ -6,5 +6,10 @@ public class Entry {
 	public String password;
 	public String url;
 	public String tag;
-	public String comment;	
+	public String comment;
+	
+	@Override
+	public String toString() {
+		return "Entry [name=" + name + "]";
+	}	
 }
