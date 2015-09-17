@@ -3,6 +3,7 @@ package tests;
 import java.util.Date;
 
 import model.User;
+import technical.level.JunitExtention;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,12 +20,11 @@ public class TestBase {
 	protected static UserLogic userLogic;
 	protected static ApplicationLogic app;
 	protected static TagLogic tagLogic;
-	private static int testCount = 0;
-	private static int counter = 0;
+	private static int classCounter = 0;
 
 	@BeforeClass
 	public static void beforeAll() throws Exception {
-		if (testCount == 0) {
+		if (classCounter == 0) {
 			beforeAllTests();
 		}
 		beforeEachClass();
@@ -46,22 +46,23 @@ public class TestBase {
 	}
 
 	private static void beforeEachClass() {
+		classCounter++;
 		System.out.println("TestBase: before each class");
+		System.out.println("Class Number: " + classCounter);
 	}
 
 	@Before
 	public void beforeEachTest() throws Exception {
-		testCount++;
 		System.out.println("TestBase: before each test");
-		System.out.println("Test Number: " + testCount);		
 	}
 	
 	@AfterClass
 	public static void afterAll() throws Exception {
-		if (counter == testCount) {
-		afterAllTests();
-		}
 		afterEachClass();
+		int maxNumberOfClasses = JunitExtention.getClasses("tests").size() - 1;
+		if (classCounter == maxNumberOfClasses) {
+		    afterAllTests();
+		}
 	}
 	
 	private static void afterEachClass() {
@@ -69,10 +70,8 @@ public class TestBase {
 	}
 	
 	@After
-	public static void afterEachTest() throws Exception{
-		counter++;
+	public void afterEachTest() throws Exception{
 		System.out.println("TestBase: after each test");
-		System.out.println("counter: " + counter);
 	}
 
 	private static void afterAllTests() {

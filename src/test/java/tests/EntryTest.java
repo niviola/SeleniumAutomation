@@ -13,8 +13,7 @@ public class EntryTest extends TestBase {
 		System.out.println("EntryTests: testEntryCreation");
 		Entry entry = generateEntry(); // data
 		entryLogic.createEntry(entry); // action
-		assertThat(entryLogic.getTextAfterEntryCreation(), containsString("The entry was created successfully.")); // check
-		//assertThat(entry.name, equalTo(entryLogic.getFirstEntryNameFromTable()));
+		entryLogic.checkTextAfterEntryCreation(); // check
 	}
 
 	@Test
@@ -25,7 +24,7 @@ public class EntryTest extends TestBase {
 		entry.comment = "Modified Entry";
 
 		entryLogic.modifyFirstEntry(entry); // action
-		assertThat(entryLogic.getTextAfterEntryModification(), containsString("The entry was saved successfully.")); //check
+		entryLogic.checkTextAfterEntryModification(); //check
 	}
 
 	@Test
