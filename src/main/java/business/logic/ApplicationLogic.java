@@ -7,20 +7,14 @@ public class ApplicationLogic extends GenericMethods {
 	private String baseUrl = "http://localhost/passwordManager";
 	
 	public void start() {
+		System.out.println("<- ApplicationLogic.start");
 		openURL(baseUrl);
+		System.out.println("-> ApplicationLogic.start");
 	}
 	
 	public void stop() {
+		System.out.println("<- ApplicationLogic.stop");
 		quit();
-	}
-	
-	public void Ending() {    // this is to fix INFO: Command failed.... error message
-        try{    
-          driver.close();
-          Thread.sleep(3000);
-           }
-       catch(Exception b){
-          b.getMessage();
-           }
+		System.out.println("-> ApplicationLogic.stop");
 	}
 }
