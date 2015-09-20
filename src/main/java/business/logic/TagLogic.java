@@ -35,8 +35,8 @@ public class TagLogic extends GenericMethods {
 	}
 	
 	private void initTagCreation() {
-		click(By.linkText("Tags"));
-		click(By.linkText("Create"));
+		click(By.cssSelector("nav ul.left > li:nth-of-type(2) > a"));
+		click(By.cssSelector("nav ul.left > li:nth-of-type(2) > ul a[href*=create]"));
 	}
 	
 	private void fillTagCreationForm(Tag tag) {
@@ -54,7 +54,7 @@ public class TagLogic extends GenericMethods {
 	
 	private void openTagByIndex(int index) {
 		//findElements(By.cssSelector("table.items a[title=Update]")).get(index).click();
-		click(By.cssSelector("table.items tr:nth-of-type(" + index + 1 + ") a[title=Update]"));
+		click(By.cssSelector("table.items tr:nth-of-type(" + (index + 1) + ") a[title=Update]"));
 		waitWhileAjaxCompleted(10);
 	}
 	
