@@ -12,12 +12,12 @@ public class UserLogic extends GenericMethods {
 	
 	@Step
 	public void login(User usr) {
-		System.out.println("<- UserLogic.login");
+		System.out.println("<--- UserLogic.login");
 		fillLoginForm(usr);
 		submitLogin();
 		assertThat(getPageTitle(), containsString("PHP Password Manager - Entry"));
 		assertThat(getElementText(By.cssSelector("div#content h1")), containsString("Manage Entries"));
-		System.out.println("-> UserLogic.login");
+		System.out.println("---> UserLogic.login");
 	}
 
 	private void fillLoginForm(User usr) {

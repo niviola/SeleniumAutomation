@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.rules.TestName;
 
 import business.logic.ApplicationLogic;
 import business.logic.EntryLogic;
@@ -31,7 +33,7 @@ public class TestBase {
 	}
 
 	private static void beforeAllTests() {
-		System.out.println("TestBase: before all tests");
+		System.out.println("<- TestBase: before all tests");
 		app = new ApplicationLogic();
 		userLogic = new UserLogic();
 		entryLogic = new EntryLogic();
@@ -43,6 +45,7 @@ public class TestBase {
 
 		app.start();
 		userLogic.login(usr);
+		System.out.println("-> TestBase: before all tests");
 	}
 
 	private static void beforeEachClass() {
@@ -51,9 +54,12 @@ public class TestBase {
 		System.out.println("Class Number: " + classCounter);
 	}
 
+	@Rule 
+	public TestName testName = new TestName();
+	
 	@Before
 	public void beforeEachTest() throws Exception {
-		System.out.println("TestBase: before each test");
+		System.out.println("<- Run test: " + testName.getMethodName());
 	}
 	
 	@AfterClass
@@ -71,7 +77,7 @@ public class TestBase {
 	
 	@After
 	public void afterEachTest() throws Exception{
-		System.out.println("TestBase: after each test");
+		System.out.println("-> End test: " + testName.getMethodName());
 	}
 
 	private static void afterAllTests() {
