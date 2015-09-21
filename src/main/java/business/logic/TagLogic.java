@@ -17,21 +17,27 @@ public class TagLogic extends GenericMethods {
 
 	@Step
 	public void updateTag(Tag tag) {
+		System.out.println("<--- TagLogic.updateTag");
 		openManageTagsPage();
 		openFirstTag();
 		fillTagUpdateForm(tag);
 		saveTagUpdateForm();
+		System.out.println("---> TagLogic.updateTag");
 	}
 
 	@Step
 	public void deleteTag() {
+		System.out.println("<--- TagLogic.deleteTag");
 		openManageTagsPage();
 		click(By.cssSelector("table.items a.delete"));
 	    closeAlertAndGetItsText();
+	    System.out.println("---> TagLogic.deleteTag");
 	}
 
 	public void openManageTagsPage() {
+		System.out.println("<--- TagLogic.openManageTagsPage");
 		openURL("http://localhost/passwordManager/index.php?r=tag/index");
+		System.out.println("---> TagLogic.openManageTagsPage");
 	}
 	
 	private void initTagCreation() {
@@ -67,6 +73,7 @@ public class TagLogic extends GenericMethods {
 	}
 	
 	public void checkElementsOnManageTagsPage() {
+		System.out.println("<--- TagLogic.checkElementsOnManageTagsPage");
 		System.out.println("****************************************************");
 		System.out.println("Manage Tags page elements");
 		System.out.println("****************************************************");
@@ -79,5 +86,6 @@ public class TagLogic extends GenericMethods {
 		System.out.println("Most Viewed title - is present = " 	+ isElementPresent(By.cssSelector("div#most-viewed-entries h5")));
 		System.out.println("Most Viewed icon - is present = " 	+ isElementPresent(By.cssSelector("div#most-viewed-entries div.settings")));
 		System.out.println("Update icon 1 - is present = " 		+ isElementPresent(By.cssSelector("table.items tr:nth-of-type(1) a[title=Update]")));
+		System.out.println("---> TagLogic.checkElementsOnManageTagsPage");
 	}
 }

@@ -26,10 +26,12 @@ public class TestBase {
 
 	@BeforeClass
 	public static void beforeAll() throws Exception {
+		System.out.println("<- TestBase.beforeAll");
 		if (classCounter == 0) {
 			beforeAllTests();
 		}
 		beforeEachClass();
+		System.out.println("-> TestBase.beforeAll");
 	}
 
 	private static void beforeAllTests() {
@@ -64,10 +66,12 @@ public class TestBase {
 	
 	@AfterClass
 	public static void afterAll() throws Exception {
+		System.out.println("<- TestBase.afterAll");
 		afterEachClass();
 		int maxNumberOfClasses = JunitExtention.getClasses("tests").size() - 1;
 		if (classCounter == maxNumberOfClasses) {
 		    afterAllTests();
+		    System.out.println("-> TestBase.afterAll");
 		}
 	}
 	

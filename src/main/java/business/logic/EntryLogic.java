@@ -2,11 +2,9 @@ package business.logic;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.openqa.selenium.By;
-
-import com.thoughtworks.selenium.webdriven.commands.IsElementPresent;
 
 import model.Entry;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -17,22 +15,28 @@ public class EntryLogic extends GenericMethods {
 	
 	@Step
 	public void createEntry(Entry entry) {
+		System.out.println("<--- EntryLogic.createEntry");
 		initEntryCreation();
 		fillEntryCreationForm(entry);
 		submitEntryCreationForm();
+		System.out.println("---> EntryLogic.createEntry");
 	}
 	
 	@Step
 	public void modifyFirstEntry(Entry entry) {
+		System.out.println("<--- EntryLogic.modifyFirstEntry");
 		openFirstEntry();
 		fillEntryModificationForm(entry);
 		submitEntryModifyForm();
+		System.out.println("---> EntryLogic.modifyFirstEntry");
 	}
 	
 	@Step
 	public void deleteEntry(){
+		System.out.println("<--- EntryLogic.deleteEntry");
 		click(By.cssSelector("a.delete"));
 	    closeAlertAndGetItsText();
+	    System.out.println("---> EntryLogic.deleteEntry");
 	}
 	
 	public String getTextAfterEntryCreation() {
@@ -87,20 +91,27 @@ public class EntryLogic extends GenericMethods {
 	}
 	
 	public void openManageEntriesPage() {
+		System.out.println("<--- EntryLogic.openManageEntriesPage");
 		openURL("http://localhost/passwordManager/index.php?r=entry/index");
+		System.out.println("---> EntryLogic.openManageEntriesPage");
 	}
 	
 	@Step
 	public void checkTextAfterEntryCreation() {
+		System.out.println("<--- EntryLogic.checkTextAfterEntryCreation");
 		assertThat(getTextAfterEntryCreation(), containsString("The entry was created successfully."));
+		System.out.println("---> EntryLogic.checkTextAfterEntryCreation");
 	}
 	
 	@Step
 	public void checkTextAfterEntryModification() {
+		System.out.println("<--- EntryLogic.checkTextAfterEntryModification");
 		assertThat(getTextAfterEntryModification(), containsString("The entry was saved successfully."));
+		System.out.println("---> EntryLogic.checkTextAfterEntryModification");
 	}
 
 	public void checkElementsOnManageEntriesPage() {
+		System.out.println("<--- EntryLogic.checkElementsOnManageEntriesPage");
 		System.out.println("****************************************************");
 		System.out.println("Manage Entry page elements");
 		System.out.println("****************************************************");
@@ -151,6 +162,7 @@ public class EntryLogic extends GenericMethods {
 		
 		//System.out.println("Tags(4) - is present = " 			+ isElementPresent(By.cssSelector("nav .has-dropdown > a[href*=tag]")));
 		assertTrue("Tags(4) is missing", isElementPresent(By.cssSelector("nav .has-dropdown > a[href*=tag]")));
+		System.out.println("---> EntryLogic.checkElementsOnManageEntriesPage");
 	}
 
 	public Object getFirstEntryNameFromTable() {
