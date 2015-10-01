@@ -7,14 +7,14 @@ public class ApplicationLogic extends GenericMethods {
 	private String baseUrl = "http://localhost/passwordManager";
 	
 	public void start() {
-		System.out.println("<--- ApplicationLogic.start");
+		log.info("<--- ApplicationLogic.start");
 		openURL(baseUrl);
-		System.out.println("---> ApplicationLogic.start");
+		log.info("---> ApplicationLogic.start");
 	}
 	
 	public void stop() {
-		System.out.println("<--- ApplicationLogic.stop");
+		log.info("<--- ApplicationLogic.stop");
 		quit();
-		System.out.println("---> ApplicationLogic.stop");
+		log.info("---> ApplicationLogic.stop");
 	}
 }

@@ -17,27 +17,27 @@ public class TagLogic extends GenericMethods {
 
 	@Step
 	public void updateTag(Tag tag) {
-		System.out.println("<--- TagLogic.updateTag");
+		log.info("<--- TagLogic.updateTag");
 		openManageTagsPage();
 		openFirstTag();
 		fillTagUpdateForm(tag);
 		saveTagUpdateForm();
-		System.out.println("---> TagLogic.updateTag");
+		log.info("---> TagLogic.updateTag");
 	}
 
 	@Step
 	public void deleteTag() {
-		System.out.println("<--- TagLogic.deleteTag");
+		log.info("<--- TagLogic.deleteTag");
 		openManageTagsPage();
 		click(By.cssSelector("table.items a.delete"));
 	    closeAlertAndGetItsText();
-	    System.out.println("---> TagLogic.deleteTag");
+	    log.info("---> TagLogic.deleteTag");
 	}
 
 	public void openManageTagsPage() {
-		System.out.println("<--- TagLogic.openManageTagsPage");
+		log.info("<--- TagLogic.openManageTagsPage");
 		openURL("http://localhost/passwordManager/index.php?r=tag/index");
-		System.out.println("---> TagLogic.openManageTagsPage");
+		log.info("---> TagLogic.openManageTagsPage");
 	}
 	
 	private void initTagCreation() {
@@ -73,19 +73,19 @@ public class TagLogic extends GenericMethods {
 	}
 	
 	public void checkElementsOnManageTagsPage() {
-		System.out.println("<--- TagLogic.checkElementsOnManageTagsPage");
-		System.out.println("****************************************************");
-		System.out.println("Manage Tags page elements");
-		System.out.println("****************************************************");
+		log.info("<--- TagLogic.checkElementsOnManageTagsPage");
+		log.info("****************************************************");
+		log.info("Manage Tags page elements");
+		log.info("****************************************************");
 		openManageTagsPage();
-		System.out.println("Title - is present = " 				+ isElementPresent(By.cssSelector("div.row div#content h1")));
-		System.out.println("Advanced Search - is present = " 	+ isElementPresent(By.cssSelector("div.row div#content p a")));
-		System.out.println("Name - is present = " 				+ isElementPresent(By.cssSelector("th#yw1_c0")));
-		System.out.println("User Name - is present = " 			+ isElementPresent(By.cssSelector("th#yw1_c1")));
-		System.out.println("first Delete icon - is present = " 	+ isElementPresent(By.cssSelector("a[href='/passwordManager/index.php?r=entry/delete&id=21']")));
-		System.out.println("Most Viewed title - is present = " 	+ isElementPresent(By.cssSelector("div#most-viewed-entries h5")));
-		System.out.println("Most Viewed icon - is present = " 	+ isElementPresent(By.cssSelector("div#most-viewed-entries div.settings")));
-		System.out.println("Update icon 1 - is present = " 		+ isElementPresent(By.cssSelector("table.items tr:nth-of-type(1) a[title=Update]")));
-		System.out.println("---> TagLogic.checkElementsOnManageTagsPage");
+		log.info("Title - is present = " 				+ isElementPresent(By.cssSelector("div.row div#content h1")));
+		log.info("Advanced Search - is present = " 	+ isElementPresent(By.cssSelector("div.row div#content p a")));
+		log.info("Name - is present = " 				+ isElementPresent(By.cssSelector("th#yw1_c0")));
+		log.info("User Name - is present = " 			+ isElementPresent(By.cssSelector("th#yw1_c1")));
+		log.info("first Delete icon - is present = " 	+ isElementPresent(By.cssSelector("a[href='/passwordManager/index.php?r=entry/delete&id=21']")));
+		log.info("Most Viewed title - is present = " 	+ isElementPresent(By.cssSelector("div#most-viewed-entries h5")));
+		log.info("Most Viewed icon - is present = " 	+ isElementPresent(By.cssSelector("div#most-viewed-entries div.settings")));
+		log.info("Update icon 1 - is present = " 		+ isElementPresent(By.cssSelector("table.items tr:nth-of-type(1) a[title=Update]")));
+		log.info("---> TagLogic.checkElementsOnManageTagsPage");
 	}
 }

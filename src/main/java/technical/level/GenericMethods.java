@@ -4,7 +4,7 @@ import static org.junit.Assert.fail;
 
 import java.util.List;
 
-import org.apache.commons.logging.Log;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -17,15 +17,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class GenericMethods {
 
 	protected WebDriver driver;
+	protected Logger log;
 	private boolean acceptNextAlert = true;
 	private StringBuffer verificationErrors = new StringBuffer();
 	@SuppressWarnings("unused")
 	private WebDriverWait wait;
 	//public Log log;
-	
+		
 	public GenericMethods() {
 		driver = DriverHelper.getInstance().getDriver();
 		wait = new WebDriverWait(driver, 10);
+		log = LoggerHelper.getInstance().getLogger();
 	}
 	
 	

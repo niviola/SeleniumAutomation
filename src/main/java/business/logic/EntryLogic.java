@@ -16,28 +16,28 @@ public class EntryLogic extends GenericMethods {
 	
 	@Step
 	public void createEntry(Entry entry) {
-		System.out.println("<--- EntryLogic.createEntry");
+		log.info("<--- EntryLogic.createEntry");
 		initEntryCreation();
 		fillEntryCreationForm(entry);
 		submitEntryCreationForm();
-		System.out.println("---> EntryLogic.createEntry");
+		log.info("---> EntryLogic.createEntry");
 	}
 	
 	@Step
 	public void modifyFirstEntry(Entry entry) {
-		System.out.println("<--- EntryLogic.modifyFirstEntry");
+		log.info("<--- EntryLogic.modifyFirstEntry");
 		openFirstEntry();
 		fillEntryModificationForm(entry);
 		submitEntryModifyForm();
-		System.out.println("---> EntryLogic.modifyFirstEntry");
+		log.info("---> EntryLogic.modifyFirstEntry");
 	}
 	
 	@Step
 	public void deleteEntry(){
-		System.out.println("<--- EntryLogic.deleteEntry");
+		log.info("<--- EntryLogic.deleteEntry");
 		click(By.cssSelector("a.delete"));
 	    closeAlertAndGetItsText();
-	    System.out.println("---> EntryLogic.deleteEntry");
+	    log.info("---> EntryLogic.deleteEntry");
 	}
 	
 	public String getTextAfterEntryCreation() {
@@ -92,78 +92,78 @@ public class EntryLogic extends GenericMethods {
 	}
 	
 	public void openManageEntriesPage() {
-		System.out.println("<--- EntryLogic.openManageEntriesPage");
+		log.info("<--- EntryLogic.openManageEntriesPage");
 		openURL("http://localhost/passwordManager/index.php?r=entry/index");
-		System.out.println("---> EntryLogic.openManageEntriesPage");
+		log.info("---> EntryLogic.openManageEntriesPage");
 	}
 	
 	@Step
 	public void checkTextAfterEntryCreation() {
-		System.out.println("<--- EntryLogic.checkTextAfterEntryCreation");
+		log.info("<--- EntryLogic.checkTextAfterEntryCreation");
 		assertThat(getTextAfterEntryCreation(), containsString("The entry was created successfully."));
-		System.out.println("---> EntryLogic.checkTextAfterEntryCreation");
+		log.info("---> EntryLogic.checkTextAfterEntryCreation");
 	}
 	
 	@Step
 	public void checkTextAfterEntryModification() {
-		System.out.println("<--- EntryLogic.checkTextAfterEntryModification");
+		log.info("<--- EntryLogic.checkTextAfterEntryModification");
 		assertThat(getTextAfterEntryModification(), containsString("The entry was saved successfully."));
-		System.out.println("---> EntryLogic.checkTextAfterEntryModification");
+		log.info("---> EntryLogic.checkTextAfterEntryModification");
 	}
 
 	public void checkElementsOnManageEntriesPage() {
-		System.out.println("<--- EntryLogic.checkElementsOnManageEntriesPage");
-		System.out.println("****************************************************");
-		System.out.println("Manage Entry page elements");
-		System.out.println("****************************************************");
-		/*System.out.println("Search - is present = " 			+ isElementPresent(By.cssSelector("input.ui-autocomplete-input"))); // TODO change to assertThat
+		log.info("<--- EntryLogic.checkElementsOnManageEntriesPage");
+		log.info("****************************************************");
+		log.info("Manage Entry page elements");
+		log.info("****************************************************");
+		/*log.info("Search - is present = " 			+ isElementPresent(By.cssSelector("input.ui-autocomplete-input"))); // TODO change to assertThat
 		if (isElementPresent(By.cssSelector("input.ui-autocomplete-input")))
-			System.out.println("Search - is present");
+			log.info("Search - is present");
 		else 
-			System.out.println("Search - is missing");*/
+			log.info("Search - is missing");*/
 		openManageEntriesPage();
 		
 		assertTrue("Search is missing", isElementPresent(By.cssSelector("input.ui-autocomplete-input")));
 				
-		//System.out.println("Advanced Search - is present = " 	+ isElementPresent(By.cssSelector("a.search-button")));
+		//log.info("Advanced Search - is present = " 	+ isElementPresent(By.cssSelector("a.search-button")));
 		assertTrue("Advanced Search is missing", isElementPresent(By.cssSelector("a.search-button")));
 		
-		//System.out.println("Displaying results - is present = " + isElementPresent(By.cssSelector("div.summary")));
+		//log.info("Displaying results - is present = " + isElementPresent(By.cssSelector("div.summary")));
 //		assertTrue("Displaying results is missing", isElementPresent(By.cssSelector("div.summary")));
 		
-		//System.out.println("Username(1) - is present = " 		+ isElementPresent(By.cssSelector("a.sort-link[href*='username']")));
+		//log.info("Username(1) - is present = " 		+ isElementPresent(By.cssSelector("a.sort-link[href*='username']")));
 		assertTrue("Username(1) is missing", isElementPresent(By.cssSelector("a.sort-link[href*='username']")));
 		
-		//System.out.println("Username(2) - is present = " 		+ isElementPresent(By.cssSelector("th#yw1_c1 a")));
+		//log.info("Username(2) - is present = " 		+ isElementPresent(By.cssSelector("th#yw1_c1 a")));
 		assertTrue("Username(2) is missing", isElementPresent(By.cssSelector("th#yw1_c1 a")));
 		
-		//System.out.println("Cloud Settings(1) - is present = " 	+ isElementPresent(By.cssSelector("div#tag-cloud i.foundicon-settings")));
+		//log.info("Cloud Settings(1) - is present = " 	+ isElementPresent(By.cssSelector("div#tag-cloud i.foundicon-settings")));
 		assertTrue("Cloud Settings(1) is missing", isElementPresent(By.cssSelector("div#tag-cloud i.foundicon-settings")));
 		
-		//System.out.println("Cloud Settings(2) - is present = " 	+ isElementPresent(By.cssSelector("div#tag-cloud div.settings")));
+		//log.info("Cloud Settings(2) - is present = " 	+ isElementPresent(By.cssSelector("div#tag-cloud div.settings")));
 		assertTrue("Cloud Settings(2) is missing", isElementPresent(By.cssSelector("div#tag-cloud div.settings")));
 		
-		//System.out.println("Cloud Settings(3) - is present = " 	+ isElementPresent(By.cssSelector("#tag-cloud .settings")));
+		//log.info("Cloud Settings(3) - is present = " 	+ isElementPresent(By.cssSelector("#tag-cloud .settings")));
 		assertTrue("Cloud Settings(3) is missing", isElementPresent(By.cssSelector("#tag-cloud .settings")));
 		
-		//System.out.println("search first cell by raw index(1) - is present = " 	+ isElementPresent(By.cssSelector("tbody tr:nth-of-type(2) td:nth-of-type(1)")));
+		//log.info("search first cell by raw index(1) - is present = " 	+ isElementPresent(By.cssSelector("tbody tr:nth-of-type(2) td:nth-of-type(1)")));
 		assertTrue("search first cell by raw index(1) is missing", isElementPresent(By.cssSelector("tbody tr:nth-of-type(1) td:nth-of-type(1)")));
 		
-		//System.out.println("search first cell by raw index(2) - is present = " 	+ isElementPresent(By.cssSelector("tbody tr:nth-of-type(2) td:first-of-type")));
+		//log.info("search first cell by raw index(2) - is present = " 	+ isElementPresent(By.cssSelector("tbody tr:nth-of-type(2) td:first-of-type")));
 //		assertTrue("search first cell by raw index(2) is missing", isElementPresent(By.cssSelector("tbody tr:nth-of-type(2) td:first-of-type")));
 		
-		//System.out.println("Tags(1) - is present = " 				+ isElementPresent(By.cssSelector("li.has-dropdown > a[href='/passwordManager/index.php?r=tag/index']")));
+		//log.info("Tags(1) - is present = " 				+ isElementPresent(By.cssSelector("li.has-dropdown > a[href='/passwordManager/index.php?r=tag/index']")));
 		assertTrue("Tags(1) is missing", isElementPresent(By.cssSelector("li.has-dropdown > a[href='/passwordManager/index.php?r=tag/index']")));
 		
-		//System.out.println("Tags(2) - is present = " 			+ isElementPresent(By.cssSelector("li.has-dropdown:nth-of-type(2) > a")));
+		//log.info("Tags(2) - is present = " 			+ isElementPresent(By.cssSelector("li.has-dropdown:nth-of-type(2) > a")));
 		assertTrue("Tags(2) is missing", isElementPresent(By.cssSelector("li.has-dropdown:nth-of-type(2) > a")));
 		
-		//System.out.println("Tags(3) - is present = " 			+ isElementPresent(By.cssSelector("li.has-dropdown > a[href*='tag/index']")));
+		//log.info("Tags(3) - is present = " 			+ isElementPresent(By.cssSelector("li.has-dropdown > a[href*='tag/index']")));
 		assertTrue("Tags(3) is missing", isElementPresent(By.cssSelector("li.has-dropdown > a[href*='tag/index']")));
 		
-		//System.out.println("Tags(4) - is present = " 			+ isElementPresent(By.cssSelector("nav .has-dropdown > a[href*=tag]")));
+		//log.info("Tags(4) - is present = " 			+ isElementPresent(By.cssSelector("nav .has-dropdown > a[href*=tag]")));
 		assertTrue("Tags(4) is missing", isElementPresent(By.cssSelector("nav .has-dropdown > a[href*=tag]")));
-		System.out.println("---> EntryLogic.checkElementsOnManageEntriesPage");
+		log.info("---> EntryLogic.checkElementsOnManageEntriesPage");
 	}
 
 	@Step
