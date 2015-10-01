@@ -21,12 +21,16 @@ public class UserLogic extends GenericMethods {
 	}
 
 	private void fillLoginForm(User usr) {
+		log.debug("<--- UserLogic.fillLoginForm" + usr);
 		type(By.id("LoginForm_username"), usr.login);
 		type(By.id("LoginForm_password"), usr.password);
+		log.debug("--->");
 	}
 
 	private void submitLogin() {
+		log.debug("<--- UserLogic.fillLoginForm");
 		click(By.cssSelector("a.button"));
 		waitWhileAjaxCompleted(10);
+		log.debug("--->");
 	}
 }

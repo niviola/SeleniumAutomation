@@ -9,20 +9,22 @@ public class TagLogic extends GenericMethods {
 	
 	@Step
 	public void createTag(Tag tag) {
+		log.info("<--- TagLogic.createTag" + tag);
 		openManageTagsPage();
 		initTagCreation();
 		fillTagCreationForm(tag);
-		saveTagCreationForm();		
+		saveTagCreationForm();
+		log.info(">---");
 	}
 
 	@Step
 	public void updateTag(Tag tag) {
-		log.info("<--- TagLogic.updateTag");
+		log.info("<--- " + tag);
 		openManageTagsPage();
 		openFirstTag();
 		fillTagUpdateForm(tag);
 		saveTagUpdateForm();
-		log.info("---> TagLogic.updateTag");
+		log.info("--->");
 	}
 
 	@Step
@@ -34,42 +36,55 @@ public class TagLogic extends GenericMethods {
 	    log.info("---> TagLogic.deleteTag");
 	}
 
-	public void openManageTagsPage() {
-		log.info("<--- TagLogic.openManageTagsPage");
-		openURL("http://localhost/passwordManager/index.php?r=tag/index");
-		log.info("---> TagLogic.openManageTagsPage");
+	private void openManageTagsPage() {
+		String url = "http://localhost/passwordManager/index.php?r=tag/index";
+		log.debug("<--- " + url);
+		openURL(url);
+		log.debug("--->");
 	}
 	
 	private void initTagCreation() {
+		log.debug("<--- TagLogic.initTagCreation");
 		click(By.cssSelector("nav ul.left > li:nth-of-type(2) > a"));
 		click(By.cssSelector("nav ul.left > li:nth-of-type(2) > ul a[href*=create]"));
+		log.debug("--->");
 	}
 	
 	private void fillTagCreationForm(Tag tag) {
+		log.debug("<--- TagLogic.fillTagCreationForm");
 		type(By.id("Tag_name"), tag.name);
+		log.debug("--->");
 	}
 	
 	private void saveTagCreationForm() {
+		log.debug("<--- TagLogic.saveTagCreationForm");
 		click(By.name("yt0"));
+		log.debug("--->");
 	}
 	
 	private void openFirstTag() {
-		int index = 0;
-		openTagByIndex(index);
+		log.debug("<--- TagLogic.openFirstTag");
+		openTagByIndex(0);
+		log.debug("--->");
 	}
 	
 	private void openTagByIndex(int index) {
-		//findElements(By.cssSelector("table.items a[title=Update]")).get(index).click();
+		log.debug("<--- openTagByIndex");
 		click(By.cssSelector("table.items tr:nth-of-type(" + (index + 1) + ") a[title=Update]"));
 		waitWhileAjaxCompleted(10);
+		log.debug("--->");
 	}
 	
 	private void fillTagUpdateForm(Tag tag){
+		log.debug("<--- TagLogic.openTagByIndex");
 		type(By.cssSelector("input#Tag_name"), tag.name);
+		log.debug("--->");
 	}
 	
 	private void saveTagUpdateForm(){
+		log.debug("<--- TagLogic.saveTagUpdateForm");
 		click(By.name("yt0"));
+		log.debug("--->");
 	}
 	
 	public void checkElementsOnManageTagsPage() {

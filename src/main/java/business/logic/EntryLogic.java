@@ -46,49 +46,62 @@ public class EntryLogic extends GenericMethods {
 	
 	public String getTextAfterEntryModification() {
 		return findElement(By.cssSelector("div.alert-box.success")).getText();
-		
 	}
 	
 	private void openFirstEntry() {
+		log.debug("<--- EntryLogic.openFirstEntry");
 		int index = 0;
 		openEntryByIndex(index);
+		log.debug(">---");
 	}
 
 	private void openEntryByIndex(int index) {
+		log.debug("<--- EntryLogic.");
 		findElements(By.cssSelector("table.items a.update-entry")).get(index).click();
 		waitWhileAjaxCompleted(10);
+		log.debug(">---");
 	}
 	
 	private void initEntryCreation() {
+		log.debug("<--- EntryLogic.");
 		click(By.linkText("Entries"));
 		waitWhileAjaxCompleted(10);
 		click(By.linkText("Create"));
+		log.debug(">---");
 	}
 
 	private void fillEntryCreationForm(Entry entry) {
+		log.debug("<--- EntryLogic.fillEntryCreationForm" + entry);
 		type(By.id("Entry_name"), entry.name);
 		type(By.id("Entry_username"), entry.userName);
 		type(By.id("Entry_password"), entry.password);
 		type(By.id("Entry_url"), entry.url);
 		type(By.id("Entry_tagList"), entry.tag);
 		type(By.id("Entry_comment"), entry.comment);
+		log.debug(">---");
 	}
 
 	private void fillEntryModificationForm(Entry entry) {
+		log.debug("<--- EntryLogic.fillEntryModificationForm" + entry);
 		type(By.cssSelector("div#entry-form-modal #Entry_name"), entry.name);
 		type(By.cssSelector("div#entry-form-modal #Entry_username"), entry.userName);
 		type(By.cssSelector("div#entry-form-modal #Entry_password"), entry.password);
 		type(By.cssSelector("div#entry-form-modal #Entry_url"), entry.url);
 		type(By.cssSelector("div#entry-form-modal #Entry_tagList"), entry.tag);
 		type(By.cssSelector("div#entry-form-modal #Entry_comment"), entry.comment);
+		log.debug(">---");
 	}	
 	
 	private void submitEntryCreationForm() {
+		log.debug("<--- EntryLogic.");
 		click(By.name("yt0"));
+		log.debug(">---");
 	}
 
 	private void submitEntryModifyForm() {
+		log.debug("<--- EntryLogic.");
 		click(By.name("yt1"));
+		log.debug(">---");
 	}
 	
 	public void openManageEntriesPage() {
@@ -173,21 +186,25 @@ public class EntryLogic extends GenericMethods {
 
 	@Step
 	public void searchEntry(String text) {
+		log.info("<--- EntryLogic.searchEntry");
 		type(By.cssSelector("input[type=search]"), text);
 		findElement(By.cssSelector("input[type=search]")).sendKeys(Keys.ENTER);
+		log.info(">---");
 	}
 
 	@Step
 	public void checkEntryExists(String uniqueName) {
+		log.info("<--- EntryLogic.checkEntryExists");
 		assertThat(getElementText(By.cssSelector(".summary")), containsString("Displaying 1-1 of 1 result."));
 		assertThat(getElementText(By.cssSelector("table.items tbody td:first-of-type")), containsString(uniqueName));
+		log.info(">---");
 	}
 
 	@Step
 	public void checkEntryDoesntExist() {
+		log.info("<--- EntryLogic.checkEntryDoesntExist");
 		assertTrue("span class=empty not found", isElementPresent(By.cssSelector("span.empty")));
 		assertThat(getElementText(By.cssSelector("span.empty")), containsString("No results found."));
-		
-		
+		log.info(">---");
 	}
 }
