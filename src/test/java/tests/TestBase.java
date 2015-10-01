@@ -89,7 +89,7 @@ public class TestBase {
 		app.stop();
 	}
 	
-	protected long generateUniqueNumber() {
+	protected static long generateUniqueNumber() {
 		return new Date().getTime();
 	}
 	

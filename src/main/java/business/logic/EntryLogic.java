@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertTrue;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import model.Entry;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -165,7 +166,28 @@ public class EntryLogic extends GenericMethods {
 		System.out.println("---> EntryLogic.checkElementsOnManageEntriesPage");
 	}
 
+	@Step
 	public Object getFirstEntryNameFromTable() {
 		return getElementText(By.cssSelector("locator")); // TODO build locator
+	}
+
+	@Step
+	public void searchEntry(String text) {
+		type(By.cssSelector("input[type=search]"), text);
+		findElement(By.cssSelector("input[type=search]")).sendKeys(Keys.ENTER);
+	}
+
+	@Step
+	public void checkEntryExists(String uniqueName) {
+		assertThat(getElementText(By.cssSelector(".summary")), containsString("Displaying 1-1 of 1 result."));
+		assertThat(getElementText(By.cssSelector("table.items tbody td:first-of-type")), containsString(uniqueName));
+	}
+
+	@Step
+	public void checkEntryDoesntExist() {
+		assertTrue("span class=empty not found", isElementPresent(By.cssSelector("span.empty")));
+		assertThat(getElementText(By.cssSelector("span.empty")), containsString("No results found."));
+		
+		
 	}
 }
