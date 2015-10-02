@@ -1,50 +1,21 @@
-12:18:40,676 [INFO ] logic.ApplicationLogic(10): start - <--- ApplicationLogic.start
-12:18:49,727 [INFO ] logic.ApplicationLogic(12): start - ---> ApplicationLogic.start
-12:18:50,016 [INFO ] logic.UserLogic(15): login - <--- UserLogic.login
-12:18:52,616 [INFO ] logic.UserLogic(20): login - ---> UserLogic.login
-12:18:52,784 [INFO ] logic.EntryLogic(19): createEntry - <--- EntryLogic.createEntry
-12:18:57,998 [INFO ] logic.EntryLogic(23): createEntry - ---> EntryLogic.createEntry
-12:18:58,021 [INFO ] logic.EntryLogic(102): checkTextAfterEntryCreation - <--- EntryLogic.checkTextAfterEntryCreation
-12:18:58,106 [INFO ] logic.EntryLogic(104): checkTextAfterEntryCreation - ---> EntryLogic.checkTextAfterEntryCreation
-12:18:58,189 [INFO ] logic.EntryLogic(28): modifyFirstEntry - <--- EntryLogic.modifyFirstEntry
-12:19:01,677 [INFO ] logic.EntryLogic(32): modifyFirstEntry - ---> EntryLogic.modifyFirstEntry
-12:19:01,710 [INFO ] logic.EntryLogic(109): checkTextAfterEntryModification - <--- EntryLogic.checkTextAfterEntryModification
-12:19:01,811 [INFO ] logic.EntryLogic(111): checkTextAfterEntryModification - ---> EntryLogic.checkTextAfterEntryModification
-12:19:01,848 [INFO ] logic.EntryLogic(37): deleteEntry - <--- EntryLogic.deleteEntry
-12:19:02,526 [INFO ] logic.EntryLogic(40): deleteEntry - ---> EntryLogic.deleteEntry
-12:19:02,567 [INFO ] logic.EntryLogic(19): createEntry - <--- EntryLogic.createEntry
-12:19:08,459 [INFO ] logic.EntryLogic(23): createEntry - ---> EntryLogic.createEntry
-12:19:12,246 [INFO ] logic.TagLogic(38): openManageTagsPage - <--- TagLogic.openManageTagsPage
-12:19:13,572 [INFO ] logic.TagLogic(40): openManageTagsPage - ---> TagLogic.openManageTagsPage
-12:19:18,464 [INFO ] logic.TagLogic(30): deleteTag - <--- TagLogic.deleteTag
-12:19:18,472 [INFO ] logic.TagLogic(38): openManageTagsPage - <--- TagLogic.openManageTagsPage
-12:19:19,824 [INFO ] logic.TagLogic(40): openManageTagsPage - ---> TagLogic.openManageTagsPage
-12:19:20,290 [INFO ] logic.TagLogic(34): deleteTag - ---> TagLogic.deleteTag
-12:19:20,331 [INFO ] logic.TagLogic(20): updateTag - <--- TagLogic.updateTag
-12:19:20,333 [INFO ] logic.TagLogic(38): openManageTagsPage - <--- TagLogic.openManageTagsPage
-12:19:21,677 [INFO ] logic.TagLogic(40): openManageTagsPage - ---> TagLogic.openManageTagsPage
-12:19:25,303 [INFO ] logic.TagLogic(25): updateTag - ---> TagLogic.updateTag
-12:19:25,341 [INFO ] logic.EntryLogic(115): checkElementsOnManageEntriesPage - <--- EntryLogic.checkElementsOnManageEntriesPage
-12:19:25,364 [INFO ] logic.EntryLogic(116): checkElementsOnManageEntriesPage - ****************************************************
-12:19:25,364 [INFO ] logic.EntryLogic(117): checkElementsOnManageEntriesPage - Manage Entry page elements
-12:19:25,364 [INFO ] logic.EntryLogic(118): checkElementsOnManageEntriesPage - ****************************************************
-12:19:25,364 [INFO ] logic.EntryLogic(95): openManageEntriesPage - <--- EntryLogic.openManageEntriesPage
-12:19:26,711 [INFO ] logic.EntryLogic(97): openManageEntriesPage - ---> EntryLogic.openManageEntriesPage
-12:19:27,032 [INFO ] logic.EntryLogic(166): checkElementsOnManageEntriesPage - ---> EntryLogic.checkElementsOnManageEntriesPage
-12:19:27,041 [INFO ] logic.TagLogic(76): checkElementsOnManageTagsPage - <--- TagLogic.checkElementsOnManageTagsPage
-12:19:27,044 [INFO ] logic.TagLogic(77): checkElementsOnManageTagsPage - ****************************************************
-12:19:27,044 [INFO ] logic.TagLogic(78): checkElementsOnManageTagsPage - Manage Tags page elements
-12:19:27,044 [INFO ] logic.TagLogic(79): checkElementsOnManageTagsPage - ****************************************************
-12:19:27,045 [INFO ] logic.TagLogic(38): openManageTagsPage - <--- TagLogic.openManageTagsPage
-12:19:28,368 [INFO ] logic.TagLogic(40): openManageTagsPage - ---> TagLogic.openManageTagsPage
-12:19:28,420 [INFO ] logic.TagLogic(81): checkElementsOnManageTagsPage - Title - is present = true
-12:19:28,482 [INFO ] logic.TagLogic(82): checkElementsOnManageTagsPage - Advanced Search - is present = true
-12:19:28,509 [INFO ] logic.TagLogic(83): checkElementsOnManageTagsPage - Name - is present = true
-12:19:28,559 [INFO ] logic.TagLogic(84): checkElementsOnManageTagsPage - User Name - is present = true
-12:19:32,696 [INFO ] logic.TagLogic(85): checkElementsOnManageTagsPage - first Delete icon - is present = false
-12:19:32,729 [INFO ] logic.TagLogic(86): checkElementsOnManageTagsPage - Most Viewed title - is present = true
-12:19:32,747 [INFO ] logic.TagLogic(87): checkElementsOnManageTagsPage - Most Viewed icon - is present = true
-12:19:32,764 [INFO ] logic.TagLogic(88): checkElementsOnManageTagsPage - Update icon 1 - is present = true
-12:19:32,776 [INFO ] logic.TagLogic(89): checkElementsOnManageTagsPage - ---> TagLogic.checkElementsOnManageTagsPage
-12:19:32,779 [INFO ] logic.ApplicationLogic(16): stop - <--- ApplicationLogic.stop
-12:19:34,489 [INFO ] logic.ApplicationLogic(18): stop - ---> ApplicationLogic.stop
+01:21:00,567 [INFO ] logic.ApplicationLogic(10): start - <--- ApplicationLogic.start
+01:21:04,172 [INFO ] logic.ApplicationLogic(12): start - ---> ApplicationLogic.start
+01:21:04,212 [INFO ] tests.LoginTest(39): testBlankCredentials - <- LoginTest.testBlankCredentials
+01:21:08,959 [DEBUG] tests.LoginTest(55): checkTextAfterBlankLogin - <--- LoginTest.checkTextAfterInvalidLogin
+01:21:10,233 [DEBUG] tests.LoginTest(58): checkTextAfterBlankLogin - --->
+01:21:10,235 [INFO ] tests.LoginTest(29): testInvalidCredentials - <- LoginTest.testInvalidCredentials
+01:21:18,227 [DEBUG] tests.LoginTest(63): checkTextAfterInvalidLogin - <--- LoginTest.checkTextAfterInvalidLogin
+01:21:18,308 [DEBUG] tests.LoginTest(65): checkTextAfterInvalidLogin - --->
+01:21:18,311 [INFO ] tests.LoginTest(34): testInvalidCredentials - ->
+01:21:18,311 [INFO ] logic.ApplicationLogic(16): stop - <--- ApplicationLogic.stop
+01:21:18,965 [INFO ] logic.ApplicationLogic(18): stop - ---> ApplicationLogic.stop
+01:21:18,973 [INFO ] logic.ApplicationLogic(10): start - <--- ApplicationLogic.start
+01:22:06,822 [INFO ] logic.ApplicationLogic(10): start - <--- ApplicationLogic.start
+01:22:09,923 [INFO ] logic.ApplicationLogic(12): start - ---> ApplicationLogic.start
+01:22:09,942 [INFO ] tests.LoginTest(39): testBlankCredentials - <- LoginTest.testBlankCredentials
+01:22:10,986 [DEBUG] tests.LoginTest(55): checkTextAfterBlankLogin - <--- LoginTest.checkTextAfterInvalidLogin
+01:22:11,102 [DEBUG] tests.LoginTest(58): checkTextAfterBlankLogin - --->
+01:22:11,114 [INFO ] tests.LoginTest(29): testInvalidCredentials - <- LoginTest.testInvalidCredentials
+01:22:12,375 [DEBUG] tests.LoginTest(63): checkTextAfterInvalidLogin - <--- LoginTest.checkTextAfterInvalidLogin
+01:22:12,453 [DEBUG] tests.LoginTest(65): checkTextAfterInvalidLogin - --->
+01:22:12,457 [INFO ] tests.LoginTest(34): testInvalidCredentials - ->
