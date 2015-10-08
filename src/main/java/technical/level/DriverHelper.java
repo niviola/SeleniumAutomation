@@ -3,6 +3,7 @@ package technical.level;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverHelper {
@@ -19,8 +20,10 @@ public class DriverHelper {
 	}
 	
 	private void setDriver() {
-		driver = new FirefoxDriver();
+		driver = new ChromeDriver();
+		//driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+		
 	}
 	
 	public WebDriver getDriver() {

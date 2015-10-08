@@ -9,30 +9,24 @@ public class EntryTest extends TestBase {
 
 	@Test
 	public void testEntryCreation() throws Exception {
-		System.out.println("<- EntryTest.testEntryCreation");
 		Entry entry = generateEntry(); // data
 		entryLogic.createEntry(entry); // action
 		entryLogic.checkTextAfterEntryCreation(); // check
-		System.out.println("-> EntryTest.testEntryCreation");
 	}
 
 	@Test
 	public void testEntryModification() throws Exception {
-		System.out.println("<- EntryTest.testEntryModification");
 		Entry entry = generateEntry(); // data
 		entry.name = "Modified Account";
 		entry.comment = "Modified Entry";
 
 		entryLogic.modifyFirstEntry(entry); // action
 		entryLogic.checkTextAfterEntryModification(); //check
-		System.out.println("-> EntryTest.testEntryModification");
 	}
 
 	@Test
 	public void testEntryErase() throws Exception {
-		System.out.println("<- EntryTest.testEntryErase");
 		entryLogic.deleteEntry();
-		System.out.println("-> EntryTest.testEntryErase");
 	}
 	
 	@Step

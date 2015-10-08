@@ -1,72 +1,42 @@
 package tests;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
-import business.logic.ApplicationLogic;
 import model.User;
-import ru.yandex.qatools.allure.annotations.Step;
-import technical.level.GenericMethods;
 
-public class LoginTest extends GenericMethods {
-	
-	static ApplicationLogic app = new ApplicationLogic();
-	User usr = new User();
-	//static TestBase tb;
+public class LoginTest extends TestBase {
+	static User usr = new User();
 	
 	@BeforeClass
 	public static void beforeLoginTests() throws Exception {
-		app.start();
+		userLogic.logOut();
+		usr.login = "admin";
+		usr.password = "admin";
 	}
 	
 	@Test
 	public void testInvalidCredentials() throws Exception {
-		log.info("<- LoginTest.testInvalidCredentials");
 		usr.login = "admin123";
 		usr.password = "admin123";
-		enterCredentials();
-		checkTextAfterInvalidLogin();
-		log.info("->");
-	} 
-	
-	@Test
-	public void testBlankCredentials() throws Exception {
-		log.info("<- LoginTest.testBlankCredentials");
-		usr.login = "";
-		usr.password = "";
-		enterCredentials();
-		checkTextAfterBlankLogin();
-		System.out.println("->");
-	}
-	
-	@Step
-	private void enterCredentials() {
-		type(By.cssSelector("#LoginForm_username"), usr.login);
-		type(By.cssSelector("#LoginForm_password"), usr.password);
-		click(By.cssSelector("a.button"));
-	}
-	
-	private void checkTextAfterBlankLogin() {
-		log.debug("<--- LoginTest.checkTextAfterInvalidLogin");
-		assertThat(getElementText(By.cssSelector("small.error:first-of-type")), containsString("Username cannot be blank."));
-		assertThat(getElementText(By.cssSelector("small.error:last-of-type")), containsString("Password cannot be blank."));
-		log.debug("--->");
-	}
-	
-	@Step
-	private void checkTextAfterInvalidLogin() {
-		log.debug("<--- LoginTest.checkTextAfterInvalidLogin");
-		assertThat(getElementText(By.cssSelector("small.error")), containsString("Login is incorrect."));
-		log.debug("--->");
+		userLogic.enterCredentials(usr);
+		userLogic.checkTextAfterInvalidLogin();
 	}
 
-	/*@AfterClass
-	public static void afterLoginTests() throws Exception {
-		app.stop();
-		TestBase.beforeAllTests();
-	}*/
+	@Test
+	public void testBlankCredentials() throws Exception {
+		usr.login = "";
+		usr.password = "";
+		userLogic.enterCredentials(usr);
+		userLogic.checkTextAfterBlankLogin();
+	}
+	
+	
+	@AfterClass
+	public static void loginBackToApp() {
+		usr.login = "admin";
+		usr.password = "admin";
+		userLogic.enterCredentials(usr);
+	}
 }

@@ -10,7 +10,6 @@ import java.util.List;
 public class JunitExtention {
 	@SuppressWarnings("rawtypes")
 	public static List<Class> getClasses(String packageName) throws ClassNotFoundException, IOException {
-		System.out.println("<---- JunitExtention.getClasses");
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		assert classLoader != null;
 		String path = packageName.replace('.', '/');
@@ -19,7 +18,6 @@ public class JunitExtention {
 		while (resources.hasMoreElements()) {
 			URL resource = resources.nextElement();
 			dirs.add(new File(resource.getFile()));
-			System.out.println("----> JunitExtention.getClasses");
 		}
 
 		ArrayList<Class> classes = new ArrayList<Class>();

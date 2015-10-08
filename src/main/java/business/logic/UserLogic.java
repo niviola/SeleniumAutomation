@@ -12,25 +12,65 @@ public class UserLogic extends GenericMethods {
 	
 	@Step
 	public void login(User usr) {
-		log.info("<--- UserLogic.login");
+		log.info("<--- " + usr);
 		fillLoginForm(usr);
 		submitLogin();
 		assertThat(getPageTitle(), containsString("PHP Password Manager - Entry"));
 		assertThat(getElementText(By.cssSelector("div#content h1")), containsString("Manage Entries"));
-		log.info("---> UserLogic.login");
+		log.info("--->");
 	}
 
 	private void fillLoginForm(User usr) {
-		log.debug("<--- UserLogic.fillLoginForm" + usr);
+		log.debug("<--- " + usr);
 		type(By.id("LoginForm_username"), usr.login);
 		type(By.id("LoginForm_password"), usr.password);
 		log.debug("--->");
 	}
 
 	private void submitLogin() {
-		log.debug("<--- UserLogic.fillLoginForm");
+		log.debug("<---");
 		click(By.cssSelector("a.button"));
 		waitWhileAjaxCompleted(10);
 		log.debug("--->");
+	}
+	
+	@Step
+	public void logOut() {
+		log.info("<---");
+		openURL("http://localhost/passwordManager/index.php?r=user/logout");
+//		click(By.linkText("Profile"));
+//		waitWhileAjaxCompleted(10);
+//		click(By.cssSelector(".dropdown>li>a[href*=logout]"));
+		log.info("--->");
+	}
+	
+	@Step
+	public void enterCredentials(User usr) {
+		log.info("<--- " + usr);
+		fillLoginForm(usr);
+		submitLogin();
+		log.info("--->");
+	}
+	
+	@Step
+	public void checkTextAfterBlankLogin() {
+		log.info("<---");
+		assertThat(getElementText(By.cssSelector("small.error:first-of-type")), containsString("Username cannot be blank."));
+		assertThat(getElementText(By.cssSelector("small.error:last-of-type")), containsString("Password cannot be blank."));
+		log.info("--->");
+	}
+	
+	@Step
+	public void checkTextAfterInvalidLogin() {
+		log.info("<---");
+		assertThat(getElementText(By.cssSelector("small.error")), containsString("Login is incorrect."));
+		log.info("--->");
+	}
+
+	@Step
+	private void checkTextAfterValidLogin() {
+		log.info("<---");
+		assertThat(getElementText(By.cssSelector("small.error")), containsString("Login is incorrect."));
+		log.info("--->");
 	}
 }

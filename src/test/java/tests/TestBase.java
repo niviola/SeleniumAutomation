@@ -4,7 +4,9 @@ import java.util.Date;
 
 import model.User;
 import technical.level.JunitExtention;
+import technical.level.LoggerHelper;
 
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -14,6 +16,7 @@ import org.junit.rules.TestName;
 
 import business.logic.ApplicationLogic;
 import business.logic.EntryLogic;
+//import business.logic.LoginLogic;
 import business.logic.TagLogic;
 import business.logic.UserLogic;
 
@@ -23,19 +26,21 @@ public class TestBase {
 	protected static ApplicationLogic app;
 	protected static TagLogic tagLogic;
 	private static int classCounter = 0;
+	protected static Logger log;
 
 	@BeforeClass
 	public static void beforeAll() throws Exception {
-		System.out.println("<- TestBase.beforeAll");
+		log = LoggerHelper.getInstance().getLogger();
+		log.info("<- TestBase.beforeAll");
 		if (classCounter == 0) {
 			beforeAllTests();
 		}
 		beforeEachClass();
-		System.out.println("-> TestBase.beforeAll");
+		log.info("-> TestBase.beforeAll");
 	}
 
 	private static void beforeAllTests() {
-		System.out.println("<- TestBase: before all tests");
+		log.info("<- TestBase: before all tests");
 		app = new ApplicationLogic();
 		userLogic = new UserLogic();
 		entryLogic = new EntryLogic();
@@ -47,13 +52,13 @@ public class TestBase {
 
 		app.start();
 		userLogic.login(usr);
-		System.out.println("-> TestBase: before all tests");
+		log.info("-> TestBase: before all tests");
 	}
 
 	private static void beforeEachClass() {
 		classCounter++;
-		System.out.println("TestBase: before each class");
-		System.out.println("Class Number: " + classCounter);
+		log.info("TestBase: before each class");
+		log.info("Class Number: " + classCounter);
 	}
 
 	@Rule 
@@ -61,31 +66,31 @@ public class TestBase {
 	
 	@Before
 	public void beforeEachTest() throws Exception {
-		System.out.println("<- Run test: " + testName.getMethodName());
+		log.info("<- Run test: " + testName.getMethodName());
 	}
 	
 	@AfterClass
 	public static void afterAll() throws Exception {
-		System.out.println("<- TestBase.afterAll");
+		log.info("<- TestBase.afterAll");
 		afterEachClass();
 		int maxNumberOfClasses = JunitExtention.getClasses("tests").size() - 1;
 		if (classCounter == maxNumberOfClasses) {
 		    afterAllTests();
-		    System.out.println("-> TestBase.afterAll");
+		    log.info("-> TestBase.afterAll");
 		}
 	}
 	
 	private static void afterEachClass() {
-		System.out.println("TestBase: after each class");
+		log.info("TestBase: after each class");
 	}
 	
 	@After
 	public void afterEachTest() throws Exception{
-		System.out.println("-> End test: " + testName.getMethodName());
+		log.info("-> End test: " + testName.getMethodName());
 	}
 
 	private static void afterAllTests() {
-		System.out.println("TestBase: after all tests");
+		log.info("TestBase: after all tests");
 		app.stop();
 	}
 	
