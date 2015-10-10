@@ -117,5 +117,12 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 		</profile>
+		<profile>
+			<id>chrome</id>
+			<properties>
+				<env>local</env>
+				<browser>chrome</browser>
+			</properties>
+		</profile>
 	</profiles>
 </project>
