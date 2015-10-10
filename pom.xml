@@ -83,4 +83,15 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<!-- profiles -->
+	<profiles>
+		<profile>
+			<id>firefox</id>
+			<properties>
+				<env>local</env>
+				<browser>firefox</browser>
+			</properties>
+			<activation><activeByDefault>true</activeByDefault></activation>
+		</profile>
+	</profiles>
 </project>

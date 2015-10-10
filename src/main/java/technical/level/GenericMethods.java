@@ -12,35 +12,43 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GenericMethods {
 
+	protected Actions builder;
 	protected WebDriver driver;
 	protected Logger log;
 	private boolean acceptNextAlert = true;
 	private StringBuffer verificationErrors = new StringBuffer();
 	@SuppressWarnings("unused")
 	private WebDriverWait wait;
-	//public Log log;
-		
+	// public Log log;
+
 	public GenericMethods() {
 		driver = DriverHelper.getInstance().getDriver();
 		wait = new WebDriverWait(driver, 10);
 		log = LoggerHelper.getInstance().getLogger();
+		builder = new Actions(driver);
 	}
-	
-	
+
 	// Technical Level
 	// =====================================================================================
 	// Should not be locators specific to application
-	
+
 	protected void sleep(int sec) {
 		try {
 			Thread.sleep(sec * 1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+
+	protected void hover(By locator) {
+		Actions hoverOverRegistrar = builder.moveToElement(findElement(locator));
+		hoverOverRegistrar.perform();
 	}
 
 	protected void click(By locator) {
@@ -99,32 +107,36 @@ public class GenericMethods {
 	protected List<WebElement> findElements(By locator) {
 		return driver.findElements(locator);
 	}
-	
+
 	protected void quit() {
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {
 			fail(verificationErrorString);
-		}		
+		}
 	}
-	
+
 	protected Object executeJavaScript(String script) {
-	    return ((JavascriptExecutor) driver).executeScript(script);
-	} 
+		return ((JavascriptExecutor) driver).executeScript(script);
+	}
 
 	protected void waitWhileAjaxCompleted(int sec) {
-	    for (int i = 0; i < sec && !isAjaxCompleted(); i++)
-	        sleep(1);
+		for (int i = 0; i < sec && !isAjaxCompleted(); i++)
+			sleep(1);
+	}
+	
+	protected void waitForElement(By locator) {
+		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 
 	private boolean isAjaxCompleted() {
-	    return (Long) executeJavaScript("return window.jQuery.active") == 0;
+		return (Long) executeJavaScript("return window.jQuery.active") == 0;
 	}
-	
+
 	protected String getElementText(By locator) {
 		return findElement(locator).getText();
 	}
-	
+
 	protected String getPageTitle() {
 		return driver.getTitle();
 	}

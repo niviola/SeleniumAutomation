@@ -37,10 +37,12 @@ public class UserLogic extends GenericMethods {
 	@Step
 	public void logOut() {
 		log.info("<---");
-		openURL("http://localhost/passwordManager/index.php?r=user/logout");
+//		openURL("http://localhost/passwordManager/index.php?r=user/logout");
 //		click(By.linkText("Profile"));
-//		waitWhileAjaxCompleted(10);
-//		click(By.cssSelector(".dropdown>li>a[href*=logout]"));
+		hover(By.linkText("Profile"));
+		waitWhileAjaxCompleted(10);
+		click(By.cssSelector(".dropdown>li>a[href*=logout]"));
+		waitForElement(By.cssSelector("a.button"));
 		log.info("--->");
 	}
 	
