@@ -23,6 +23,13 @@ public class EntryTest extends TestBase {
 		entryLogic.modifyFirstEntry(entry); // action
 		entryLogic.checkTextAfterEntryModification(); //check
 	}
+	
+	@Test
+	public void testExportToCSV() throws Exception {
+		fileHelper.eraseFilesFromDirectory();
+		entryLogic.exportEntryToCSV();
+		entryLogic.checkEntryFileExists();
+	}
 
 	@Test
 	public void testEntryErase() throws Exception {

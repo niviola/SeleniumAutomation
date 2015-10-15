@@ -112,6 +112,10 @@
 			<properties>
 				<env>local</env>
 				<browser>firefox</browser>
+				<user>admin</user>
+				<password>admin</password>
+				<URL>http://localhost/passwordManager/</URL>
+				<downloadDirectory>C:\\Users\\Viktor-VM\\Downloads</downloadDirectory>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -122,6 +126,20 @@
 			<properties>
 				<env>local</env>
 				<browser>chrome</browser>
+			</properties>
+		</profile>
+		<profile>
+			<id>opera</id>
+			<properties>
+				<env>local</env>
+				<browser>opera</browser>
+			</properties>
+		</profile>
+		<profile>
+			<id>ie</id>
+			<properties>
+				<env>local</env>
+				<browser>ie</browser>
 			</properties>
 		</profile>
 	</profiles>

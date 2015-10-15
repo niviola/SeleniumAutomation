@@ -4,6 +4,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
@@ -32,6 +34,24 @@ public class EntryLogic extends GenericMethods {
 		log.info("---> EntryLogic.modifyFirstEntry");
 	}
 	
+	@Step
+	public void exportEntryToCSV() {
+		exportEntry();
+	}
+	
+	@Step
+	public void checkEntryFileExists() {
+		File file = new File("c:\\Users\\Viktor-VM\\Downloads");
+	}
+	
+	private void exportEntry() {
+		log.debug("<--- EntryLogic.");
+		click(By.linkText("Entries"));
+		waitWhileAjaxCompleted(10);
+		click(By.linkText("Export to CSV"));
+		log.debug(">---");
+	}
+
 	@Step
 	public void deleteEntry(){
 		log.info("<--- EntryLogic.deleteEntry");
@@ -207,4 +227,5 @@ public class EntryLogic extends GenericMethods {
 		assertThat(getElementText(By.cssSelector("span.empty")), containsString("No results found."));
 		log.info(">---");
 	}
+
 }

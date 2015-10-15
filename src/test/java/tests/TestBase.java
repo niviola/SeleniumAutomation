@@ -3,6 +3,7 @@ package tests;
 import java.util.Date;
 
 import model.User;
+import technical.level.FileHelper;
 import technical.level.JunitExtention;
 import technical.level.LoggerHelper;
 
@@ -21,6 +22,7 @@ import business.logic.TagLogic;
 import business.logic.UserLogic;
 
 public class TestBase {
+	protected static FileHelper fileHelper;
 	protected static EntryLogic entryLogic;
 	protected static UserLogic userLogic;
 	protected static ApplicationLogic app;
@@ -45,6 +47,7 @@ public class TestBase {
 		userLogic = new UserLogic();
 		entryLogic = new EntryLogic();
 		tagLogic = new TagLogic();
+		fileHelper = new FileHelper();
 		
 		User usr = new User();
 		usr.login = "admin";
